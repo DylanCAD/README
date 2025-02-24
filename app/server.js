@@ -12,8 +12,6 @@ const helmet = require('helmet')
 // Core
 const config = require('./config.js')
 const routes = require('./controllers/routes.js')
-const albums = require('./controllers/albums.js')
-
 
 /**
  * Server
@@ -74,8 +72,7 @@ module.exports = class Server {
   routes () {
     new routes.Users(this.app, this.connect, this.authenticateToken)
     new routes.Auth(this.app)
-    new routes.Albums(this.app)
-    new routes.Photos(this.app)
+    new routes.Albums(this.app, this.connect, this.authenticateToken)
 
     // If route not exist
     this.app.use((req, res) => {

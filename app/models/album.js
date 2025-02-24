@@ -1,9 +1,7 @@
-const mongoose = require('mongoose');
-const PhotoSchema  = require('./photo');
+const mongoose = require('mongoose')
 
-const AlbumSchema  = new mongoose.Schema({
-  titre: String,
-  photos: [PhotoSchema]
+const Schema = new mongoose.Schema({
+  titre: String
 }, {
   collection: 'albums',
   minimize: false,
@@ -14,6 +12,6 @@ const AlbumSchema  = new mongoose.Schema({
 
     delete ret._id
   }
-});
+})
 
-module.exports = AlbumSchema
+module.exports = Schema

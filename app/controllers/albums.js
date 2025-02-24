@@ -45,7 +45,7 @@ const Albums = class Albums {
   showById () {
     this.app.get('/album/:id', this.authenticateToken,  (req, res) => {
       try {
-        if (req.album.role === 'coach') {
+        if (req.user.role === 'coach') {
           this.AlbumModel.findById(req.params.id).then((album) => {
             res.status(200).json(album || {})
           }).catch(() => {
@@ -79,7 +79,7 @@ const Albums = class Albums {
       try {
         const albumModel = new this.AlbumModel(req.body)
 
-        albuùModel.save().then((album) => {
+        albumModel.save().then((album) => {
           res.status(200).json(album || {})
         }).catch(() => {
           res.status(200).json({})
